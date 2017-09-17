@@ -1,0 +1,11 @@
+{
+	"extension.databases": [
+		{
+			"type": "postgres",
+			"name": "flo@192.168.99.100:5432 (postgres)",
+			"host": "192.168.99.100:5432",
+			"user": "flo",
+			"password": "eenie"
+		}
+	]
+}
