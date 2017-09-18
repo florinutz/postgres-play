@@ -2,10 +2,12 @@ FROM postgres:9-alpine
 
 MAINTAINER flo "florinutz@gmail.com"
 
-ENV POSTGRES_USER flo
-ENV POSTGRES_PASSWORD eenie
-ENV POSTGRES_DB dvdrental
-ENV DUMP "/dump.tar"
+ARG importUser
+ARG importDb
+
+ENV importUser=$importUser
+ENV importDb=$importDb
 
 ADD dump.tar /
-RUN pg_restore -c -U $POSTGRES_USER -d POSTGRES_DB -v $DUMP -W
+
+RUN pg_restore -U $POSTGRES_USER -d $POSTGRES_DB /dump.tar -v

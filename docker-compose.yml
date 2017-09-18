@@ -1,10 +1,18 @@
-version: '3.2'
+version: '3.3'
 services:
-  db:
-    build: build
-    image: florinutz:postgres
+  postgres:
+    container_name: db
+    image: florinutz/postgres-playground
+    build: 
+      context: build
+      args: 
+        importUser: flo
+        importDb: playground
     ports:
     - "5432:5432"
     volumes:
-    - ./db:/var/lib/postgresql/data
-    container_name: db
+    - ./db:/var/lib/postgresql/data:delegated
+    environment: 
+      POSTGRES_USER: flo
+      POSTGRES_PASSWORD: eenie
+      POSTGRES_DB: playground
