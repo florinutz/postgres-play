@@ -11,8 +11,10 @@ services:
     ports:
     - "5432:5432"
     volumes:
-    - ./db:/var/lib/postgresql/data:delegated
+    - db-data:/var/lib/postgresql/data
     environment: 
       POSTGRES_USER: flo
       POSTGRES_PASSWORD: eenie
       POSTGRES_DB: playground
+volumes:
+  db-data:
